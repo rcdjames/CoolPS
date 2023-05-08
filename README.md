@@ -1,3 +1,3 @@
 # coolps
  
-some handy powershell tools I have written
+some handy powershell scripts
