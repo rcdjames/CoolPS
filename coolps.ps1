@@ -94,7 +94,7 @@ nslookup https://google.com.au 1.1.1.1
 cls
 getman /v
 powercfg /energy
-pwercfg /batteryreport
+powercfg /batteryreport
 assoc
 chkdsk /f /r 
 sfc /scannow
