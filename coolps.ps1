@@ -1,6 +1,5 @@
 Write-Host "hello, coolps!" -ForegroundColor Red -BackgroundColor Black
 
-
 Get-ExecutionPolicy
 
 Set-ExecutionPolicy
@@ -13,15 +12,17 @@ Get-Alias *
 
 Get-Command -Name *user*
 
+Get-Location | Get-Member
+
 Write-Host ("hello, powershell!", "why hello there!") -Separator "++" -ForegroundColor Green -BackgroundColor Black
 
 Get-Service | Select-Object -Property DisplayName, Status, StartType | Where-Object {$_.StartType -eq "Automatic"}
 
 Get-Service | Select-Object -Property DisplayName, Status, ServiceName | Out-GridView -PassThru | Restart-Service -Verbose
 
-Get-Process | Where-Object {$_.MainWindowTitle}
-
 gps | ? {$_.MainWindowTitle} | Format-Table ID, Name, MainWindowTitle -Autosize
+
+Get-Process | Where-Object {$_.MainWindowTitle}
 
 Get-Process | Select-Object -Property ID, Name, Description | Out-GridView
 
@@ -30,10 +31,6 @@ Get-Process | Where-Object {$_.MainWindowTitle} | Out-GridView
 Get-History | Out-GridView -PassThru | Invoke-Expression
 
 Write-Warning "this is a warning!"
-
-Get-Location | Get-Member
-
-Get-Help Get-LocalUser -Examples
 
 # returns all services with automatic start type
 Get-Service | Select-Object -Property DisplayName, Status, StartType | Where-Object {$_.StartType -eq "Automatic"}
@@ -68,51 +65,47 @@ Get-Process | Select-Object -Property Id, ProcessName | Out-GridView -PassThru |
 # returns various printer details to file
 Get-Printer * | Select-Object Name, ShareName, Comment, Location, DriverName, Portname, PrinterStatus, Type, DeviceType, PrintProcessor, CimClass | Format-Table | Out-File -FilePath C:\PrinterInfo.txt
 
-# cmd
+### cmd commands ###
+
+# include /? with any command to return help text
+
+# returns report on wlan performance and stats in .html format
 netsh wlan show wlanreport
+netsh interface show interface
+# returns report of currently applied group policies
 gpresult /R
-whoami
-hostname
-tracert 
-gpresult /r /z
-gpresult /h C:\GPO-Report.html /f
-nslookup
-systeminfo
-scp
-subst
-explorer
-/?
-start google.com.au
-doskey /history
+gpresult /h C:\GPO-Report.html /f # saves to .html format
 ipconfig /all
 ipconfig /all | findstr "DNS"
 ipconfig /release
 ipconfig /renew
 ipconfig /displaydns
 ipconfig /flushdns
-nslookup https://google.com.au 1.1.1.1
-cls
-getman /v
+whoami
+hostname
+tracert 
+systeminfo
+scp
+subst
+explorer
+doskey /history
+nslookup [host] [server]
+cls # clear command window
 powercfg /energy
 powercfg /batteryreport
 assoc
 chkdsk /f /r 
 sfc /scannow
-dism /online /cleanup /checkhealth /scanhealth /restorehealth
 tasklist
-taskkill /f /pid
-netsh wlan show wlan report
-netsh interface show interface
-netsh /?
+taskkill /f /pid [PID]
 ping -t
-tracert -d google.com.au
+tracert -d [host]
 netstat
 netstat -af
 netstat -o
 netstat -e -t 5
 route print
-shutdown
-shutdown /r /fw /f /t 0
+shutdown /f /t 10 # force reboot in 10 seconds time
 DISM.exe /Online /Cleanup-image /Scanhealth
 DISM.exe /Online /Cleanup-image /Restorehealth
 DISM.exe /Online /Cleanup-image /startcomponentcleanup
