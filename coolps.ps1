@@ -59,11 +59,16 @@ $SourceUser = "FirstName.LastName"
 $DestinationUser ="FirstName.LastName"
 Get-ADUser -Identity $SourceUser -Properties memberof  | Select-Object -ExpandProperty memberof | Add-ADGroupMember -Members $DestinationUser
 
-# stop processes in a grid view
+# stop processes tool from grid view
 Get-Process | Select-Object -Property Id, ProcessName | Out-GridView -PassThru | Stop-Process -Force
 
 # returns various printer details to file
 Get-Printer * | Select-Object Name, ShareName, Comment, Location, DriverName, Portname, PrinterStatus, Type, DeviceType, PrintProcessor, CimClass | Format-Table | Out-File -FilePath C:\PrinterInfo.txt
+
+### cmd commands to remote pc ###
+
+# returns system uptime
+powershell.exe -Command "Write-Host 'System Uptime'; (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime | Select-Object Days, Hours, Minutes, Seconds"
 
 ### cmd commands ###
 
