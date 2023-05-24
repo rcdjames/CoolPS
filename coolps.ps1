@@ -80,6 +80,7 @@ netsh interface show interface
 # returns report of currently applied group policies
 gpresult /R
 gpresult /h C:\GPO-Report.html /f # saves to .html format
+gpresult /USER teststud /H C:\gpresult-teststud.html # also specify specific user
 ipconfig /all
 ipconfig /all | findstr "DNS"
 ipconfig /release
