@@ -1,46 +1,48 @@
-### cmd commands ###
+### cool cmd commands ###
 
 # include /? with any command to return help text
 
-# returns report on wlan performance and stats in .html format
-netsh wlan show wlanreport
+### networking tools
+netsh wlan show wlanreport # returns report on wlan stats in .html format
 netsh interface show interface
-# returns report of currently applied group policies
-gpresult /R
-gpresult /h C:\GPO-Report.html /f # saves to .html format
-gpresult /USER teststud /H C:\gpresult-teststud.html # also specify specific user
 ipconfig /all
 ipconfig /all | findstr "DNS"
 ipconfig /release
 ipconfig /renew
 ipconfig /displaydns
 ipconfig /flushdns
-whoami
+ping -t
+tracert -d [host]
+netstat # protocol statistics and current tcp/ip network connections
+netstat -af # display all connections/ports and fqdn of foreign addresses
+netstat -o
+netstat -e -t 5
+nslookup [host] [server]
+route print
 hostname
-tracert 
+whoami
 systeminfo
 scp
+
+### sys admin
+gpresult /R # returns report of currently applied policies
+gpresult /h C:\GPO-Report.html /f # saves to .html format returns report of currently applied policies and saves to file
+gpresult /USER teststud /H C:\gpresult-teststud.html # can also specify the target user
+net user givenname.surname | findstr "expires"
+DISM.exe /Online /Cleanup-image /Scanhealth
+DISM.exe /Online /Cleanup-image /Restorehealth
+DISM.exe /Online /Cleanup-image /StartComponentCleanup
+sfc /scannow # system file checker
+shutdown /f /t 10 # force reboot in 10 seconds time
+tasklist
+taskkill /f /pid [PID]
+
+### extras
 subst
 explorer
-doskey /history
-nslookup [host] [server]
+doskey /history # returns command history
 cls # clear command window
 powercfg /energy
 powercfg /batteryreport
-assoc
+assoc # returns all file associations
 chkdsk /f /r 
-sfc /scannow
-tasklist
-taskkill /f /pid [PID]
-ping -t
-tracert -d [host]
-netstat
-netstat -af
-netstat -o
-netstat -e -t 5
-route print
-shutdown /f /t 10 # force reboot in 10 seconds time
-DISM.exe /Online /Cleanup-image /Scanhealth
-DISM.exe /Online /Cleanup-image /Restorehealth
-DISM.exe /Online /Cleanup-image /startcomponentcleanup
-sfc /scannow
