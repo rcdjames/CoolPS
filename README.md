@@ -1,3 +1,2 @@
-# coolps
- 
-some handy powershell scripts
+# CoolPowerShell
+A collection of handy powershell scripts for Windows system administration
