@@ -1,6 +1,6 @@
-Write-Host "hello, coolps!" -ForegroundColor Red -BackgroundColor Black
+Write-Host "hello, CoolPS!" -ForegroundColor Red -BackgroundColor Black
 
-Get-ExecutionPolicy
+Get-ExecutionPolicy # check the execution policy before running scripts
 
 Set-ExecutionPolicy
 
@@ -8,7 +8,7 @@ Update-Help
 
 Get-Help Get-Service -Examples
 
-Get-Alias *
+Get-Alias * # return all aliases available on the system
 
 Get-Command -Name *user*
 
@@ -20,7 +20,7 @@ Get-Service | Select-Object -Property DisplayName, Status, StartType | Where-Obj
 
 Get-Service | Select-Object -Property DisplayName, Status, ServiceName | Out-GridView -PassThru | Restart-Service -Verbose
 
-gps | ? {$_.MainWindowTitle} | Format-Table ID, Name, MainWindowTitle -Autosize
+gps | ? {$_.MainWindowTitle} | Format-Table ID, Name, MainWindowTitle -Autosize # note use of alias gps
 
 Get-Process | Where-Object {$_.MainWindowTitle}
 
@@ -54,7 +54,7 @@ Get-ChildItem -Path $ScanTarget -Recurse | Select-Object Name, LastWriteTime | S
 Get-ChildItem .\Downloads -Recurse -Depth 2 -Include *.png | Out-GridView
 Get-ChildItem .\Downloads -Recurse -Depth 2 | Out-GridView
 
-# copy over membership from one account to another
+# copy over identity memberships and properties from one account to another
 $SourceUser = "FirstName.LastName"
 $DestinationUser ="FirstName.LastName"
 Get-ADUser -Identity $SourceUser -Properties memberof  | Select-Object -ExpandProperty memberof | Add-ADGroupMember -Members $DestinationUser
@@ -65,54 +65,9 @@ Get-Process | Select-Object -Property Id, ProcessName | Out-GridView -PassThru |
 # returns various printer details to file
 Get-Printer * | Select-Object Name, ShareName, Comment, Location, DriverName, Portname, PrinterStatus, Type, DeviceType, PrintProcessor, CimClass | Format-Table | Out-File -FilePath C:\PrinterInfo.txt
 
-### cmd commands to remote pc ###
+
+
+### commands to remote pc ###
 
 # returns system uptime
 powershell.exe -Command "Write-Host 'System Uptime'; (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime | Select-Object Days, Hours, Minutes, Seconds"
-
-### cmd commands ###
-
-# include /? with any command to return help text
-
-# returns report on wlan performance and stats in .html format
-netsh wlan show wlanreport
-netsh interface show interface
-# returns report of currently applied group policies
-gpresult /R
-gpresult /h C:\GPO-Report.html /f # saves to .html format
-gpresult /USER teststud /H C:\gpresult-teststud.html # also specify specific user
-ipconfig /all
-ipconfig /all | findstr "DNS"
-ipconfig /release
-ipconfig /renew
-ipconfig /displaydns
-ipconfig /flushdns
-whoami
-hostname
-tracert 
-systeminfo
-scp
-subst
-explorer
-doskey /history
-nslookup [host] [server]
-cls # clear command window
-powercfg /energy
-powercfg /batteryreport
-assoc
-chkdsk /f /r 
-sfc /scannow
-tasklist
-taskkill /f /pid [PID]
-ping -t
-tracert -d [host]
-netstat
-netstat -af
-netstat -o
-netstat -e -t 5
-route print
-shutdown /f /t 10 # force reboot in 10 seconds time
-DISM.exe /Online /Cleanup-image /Scanhealth
-DISM.exe /Online /Cleanup-image /Restorehealth
-DISM.exe /Online /Cleanup-image /startcomponentcleanup
-sfc /scannow
