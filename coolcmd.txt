@@ -1,0 +1,46 @@
+### cmd commands ###
+
+# include /? with any command to return help text
+
+# returns report on wlan performance and stats in .html format
+netsh wlan show wlanreport
+netsh interface show interface
+# returns report of currently applied group policies
+gpresult /R
+gpresult /h C:\GPO-Report.html /f # saves to .html format
+gpresult /USER teststud /H C:\gpresult-teststud.html # also specify specific user
+ipconfig /all
+ipconfig /all | findstr "DNS"
+ipconfig /release
+ipconfig /renew
+ipconfig /displaydns
+ipconfig /flushdns
+whoami
+hostname
+tracert 
+systeminfo
+scp
+subst
+explorer
+doskey /history
+nslookup [host] [server]
+cls # clear command window
+powercfg /energy
+powercfg /batteryreport
+assoc
+chkdsk /f /r 
+sfc /scannow
+tasklist
+taskkill /f /pid [PID]
+ping -t
+tracert -d [host]
+netstat
+netstat -af
+netstat -o
+netstat -e -t 5
+route print
+shutdown /f /t 10 # force reboot in 10 seconds time
+DISM.exe /Online /Cleanup-image /Scanhealth
+DISM.exe /Online /Cleanup-image /Restorehealth
+DISM.exe /Online /Cleanup-image /startcomponentcleanup
+sfc /scannow
