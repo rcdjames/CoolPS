@@ -65,6 +65,11 @@ Get-Process | Select-Object -Property Id, ProcessName | Out-GridView -PassThru |
 # returns various printer details to file
 Get-Printer * | Select-Object Name, ShareName, Comment, Location, DriverName, Portname, PrinterStatus, Type, DeviceType, PrintProcessor, CimClass | Format-Table | Out-File -FilePath C:\PrinterInfo.txt
 
+# returns all group memberships and a total count
+$UserName = 'firstname.surname'
+Write-Output $UserName
+Get-ADPrincipalGroupMembership $UserName | Select name | Sort-Object name
+(Get-ADUser $UserName –Properties MemberOf).MemberOf.Count
 
 
 ### commands to remote pc ###
