@@ -1,0 +1,1 @@
+Powershell.exe -Command "Write-Host 'System Uptime'; (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime | Select-Object Days, Hours, Minutes, Seconds"
