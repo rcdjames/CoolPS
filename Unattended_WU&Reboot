@@ -1,0 +1,1 @@
+set-executionpolicy remotesigned -force; install-packageprovider -name nuget -minimumversion 2.8.5.201 -force; install-module pswindowsupdate -force; import-module pswindowsupdate;set-executionpolicy restricted -force; install-windowsupdate -microsoftupdate -acceptall -ignorereboot; shutdown /r /t 30
