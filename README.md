@@ -7,9 +7,9 @@ A collection of scripts for Windows system administration and many other tasks s
 * ✅ ScanDirs_ISE.ps1
 * ❌ GetADUserProperties.ps1
 * ❌ GetAutoStartServices.ps1
-## Scripts Published: 6
-## Scripts Completed: 4
-## Scripts Incomplete: 2
+Scripts Published: 6 ✨
+Scripts Completed: 4 🆗
+Scripts Incomplete: 2 ⛔
 ### Useful Web Resources
 * [Concatenate, Expand, Format and All Things PowerShell Strings](https://adamtheautomator.com/powershell-strings/)
 * [Getting Started with PowerShell and the PSWindowsUpdate Module](https://adamtheautomator.com/pswindowsupdate/)
