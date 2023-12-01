@@ -17,7 +17,7 @@ Get-ChildItem -Path $ScanDir -Force -Recurse | Where-Object {
     }
 }
 # summary of total hits found during scan
-Write-Host ("Total hits for {0}: {1}" -f $ScanForExt.ToUpper(), $FoundFiles.Count) -BackgroundColor Green -ForegroundColor Whit
+Write-Host ("Total hits for {0}: {1}" -f $ScanForExt.ToUpper(), $FoundFiles.Count) -BackgroundColor Green -ForegroundColor White
 $FoundFiles | ForEach-Object {
     Write-Host ("{0}" -f $_.Name) -BackgroundColor Black -ForegroundColor Green
 }
